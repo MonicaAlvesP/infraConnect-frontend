@@ -1,0 +1,16 @@
+.container {
+  position: relative;
+  min-height: 100vh;
+
+  &::after {
+    content: "";
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 35vh;
+    height: 30vh;
+    background: url('../../assets/aloe-vera.svg') no-repeat center / contain;
+    pointer-events: none;
+    z-index: -1;
+  }
+}

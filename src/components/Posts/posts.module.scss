@@ -1,0 +1,104 @@
+@use '@/styles/variables.scss' as *;
+
+//  Posts
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  text-align: center;
+  color: $primary-color;
+  margin-bottom: 20px;
+}
+
+.message {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 10px;
+  
+  &.error {
+    color: red;
+  }
+}
+
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: solid red;
+}
+
+.post-item {
+  padding: 10px;
+  border: 1px solid lighten($secondary-color, 30%);
+  border-radius: 5px;
+  background: lighten($secondary-color, 45%);
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.button {
+  padding: 8px 12px;
+  background: $primary-color;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  
+  &:hover {
+    background: darken($primary-color, 10%);
+  }
+}
+
+.loading {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: $secondary-color;
+}
+
+//  PostsItem
+.content {
+  box-shadow: 0 4px 8px rgba(128, 0, 128, 0.1);
+  border-radius: 15px;
+  line-height: 1.5;
+  margin-bottom: 0.8rem;
+  padding: 1rem;
+  background: #e4b2ec7c;
+}
+
+// PostList
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  button {
+    padding: 8px 12px;
+    background: $primary-color;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: darken($primary-color, 10%);
+    }
+  }
+}

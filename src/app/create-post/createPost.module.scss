@@ -1,0 +1,73 @@
+@use '@/styles/variables.scss' as *;
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  color: $primary-color;
+  margin-bottom: 20px;
+}
+
+.message {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 10px;
+
+  &.error {
+    color: red;
+  }
+
+  &.success {
+    color: green;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label {
+  font-weight: bold;
+  color: $secondary-color;
+  font-size: 16px;
+  margin-right: 0.8rem;
+}
+
+.input {
+  padding: 6px;
+  border: 1px solid lighten($secondary-color, 30%);
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+.button {
+  padding: 10px;
+  background: $primary-color;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: darken($primary-color, 10%);
+  }
+}
