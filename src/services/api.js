@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://backend-infraconnect.fly.dev/api";
+const API_URL = "https://backend-infraconnect.fly.dev";
 
 const api = axios.create({
   baseURL: API_URL,
@@ -11,7 +11,7 @@ const api = axios.create({
 
 export const loginUser = async (username, password) => {
   try {
-    const response = await api.post('/users/login/', { username, password })
+    const response = await api.post('/api/users/login/', { username, password })
     return response.data
   } catch (error) {
     throw error
@@ -21,7 +21,7 @@ export const loginUser = async (username, password) => {
 export const registerUser = async (username, password) => {
   try {
     const payload = { username, password };
-    const response = await api.post('/users/register/', payload);
+    const response = await api.post('/api/users/register/', payload);
     return response.data;
   } catch (error) {
     throw error;
@@ -53,7 +53,7 @@ export const getPosts = async () => {
       throw new Error("Token de autenticação não encontrado.");
     }
 
-    const response = await api.get('/posts/', {
+    const response = await api.get('/api/posts/', {
       headers: {
         Authorization: `Token ${token}`,
       },
