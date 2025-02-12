@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import PostList from "./PostList";
-import PostEditor from "./PostEditor";
 import EditPostModal from "@/components/EditPostModal";
 import { getPosts, createPost, updatePost, deletePost } from "@/services/api";
 import s from "./posts.module.scss";
@@ -15,6 +14,8 @@ export default function Posts() {
   const [editingPost, setEditingPost] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 4;
   const router = useRouter();
 
   const isAdmin =
@@ -90,6 +91,14 @@ export default function Posts() {
     }
   };
 
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
   if (loading) return <p className={s.loading}>Carregando posts...</p>;
   if (error)
     return <p className={`${s.message} ${s.error}`}>{error}</p>;
@@ -97,18 +106,30 @@ export default function Posts() {
   return (
     <section className={s.container}>
       <h1 className={s.title}>Últimos Posts</h1>
-      {posts.length === 0 ? (
+      {currentPosts.length === 0 ? (
         <p>Nenhum post disponível.</p>
       ) : (
         <div className={s.postsList}>
           <PostList
-            posts={posts}
+            posts={currentPosts}
             isAdmin={isAdmin}
             onEdit={handleEdit}
             onDelete={handleDelete}
           />
         </div>
       )}
+
+      <div className={s.pagination}>
+        {Array.from({ length: Math.ceil(posts.length / postsPerPage) }, (_, i) => (
+          <button
+            key={i + 1}
+            onClick={() => handlePageChange(i + 1)}
+            className={currentPage === i + 1 ? s.active : ""}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </div>
 
       <EditPostModal
         isOpen={modalIsOpen}

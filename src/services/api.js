@@ -31,7 +31,7 @@ export const registerUser = async (username, password) => {
 export const createPost = async (token, title, content) => {
   try {
     const response = await api.post(
-      '/posts/',
+      '/api/posts/',
       { title, content },
       {
         headers: {
