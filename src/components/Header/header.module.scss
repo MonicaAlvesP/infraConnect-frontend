@@ -6,7 +6,7 @@
   justify-content: end;
   align-items: center;
   padding: 0 1rem;
-  background-color: $secondary-color;
+  background-color: $primary-color;
 }
 
 .adminLinks {
@@ -24,11 +24,10 @@
     color: $background-color;
     text-decoration: none;
     padding: 0.5rem;
-    border-radius: 15px;
-
 
     &:hover {
-      background-color: $primary-color;
+      background-color: $secondary-color;
+      color: $primary-color;
     }
   }
 }
@@ -37,14 +36,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $secondary-color;
+  color: $background-color;
+  background-color: $secondary-color;
   font-weight: bold;
   padding: 0.5rem;
   border: none;
-  border-radius: 15px;
 
   &:hover {
-    background-color: $primary-color;
-    color: $background-color;
+    background-color: darken($secondary-color, 10%);
   }
 }

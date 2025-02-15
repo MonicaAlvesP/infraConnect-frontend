@@ -68,7 +68,7 @@ export const getPosts = async () => {
 export const updatePost = async (token, id, title, content) => {
   try {
     const response = await api.put(
-      `/posts/${id}/`,
+      `/api/posts/${id}/`,
       { title, content },
       {
         headers: {
@@ -85,7 +85,7 @@ export const updatePost = async (token, id, title, content) => {
 export const deletePost = async (token, id) => {
   try {
     const response = await api.delete(
-      `/posts/${id}/`,
+      `/api/posts/${id}/`,
       {
         headers: {
           Authorization: `Token ${token}`,

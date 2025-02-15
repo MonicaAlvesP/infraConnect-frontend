@@ -1,11 +1,12 @@
 'use client'
 
 import Posts from "@/components/Posts";
-import s from './posts.module.scss';
+import ImageCarousel from "@/components/Carousel/ImageCarousel";
 
 export default function PostsPage() {
   return (
-    <section className={s.container}>
+    <section>
+      <ImageCarousel />
       <Posts />
     </section>
   );

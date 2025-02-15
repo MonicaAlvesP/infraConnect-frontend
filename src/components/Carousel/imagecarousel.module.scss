@@ -1,0 +1,22 @@
+.carouselContainer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .carouselContainer {
+    max-width: 500px;
+  }
+
+  .carouselImage {
+    width: 100%;
+    height: 20vh;
+  }
+}

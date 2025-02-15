@@ -53,17 +53,6 @@ export default function Posts() {
     }
   };
 
-  const handleCreate = async (title, content) => {
-    try {
-      setIsSaving(true);
-      const response = await createPost(token, title, content);
-      setPosts([...posts, response]);
-    } catch (err) {
-      setError("Erro ao criar o post.");
-    } finally {
-      setIsSaving(false);
-    }
-  };
 
   const handleEdit = (post) => {
     setEditingPost(post);
@@ -119,17 +108,6 @@ export default function Posts() {
         </div>
       )}
 
-      <div className={s.pagination}>
-        {Array.from({ length: Math.ceil(posts.length / postsPerPage) }, (_, i) => (
-          <button
-            key={i + 1}
-            onClick={() => handlePageChange(i + 1)}
-            className={currentPage === i + 1 ? s.active : ""}
-          >
-            {i + 1}
-          </button>
-        ))}
-      </div>
 
       <EditPostModal
         isOpen={modalIsOpen}
@@ -140,6 +118,17 @@ export default function Posts() {
           setEditingPost(null);
         }}
       />
+      <span className={s.pagination}>
+        {Array.from({ length: Math.ceil(posts.length / postsPerPage) }, (_, i) => (
+          <button
+            key={i + 1}
+            onClick={() => handlePageChange(i + 1)}
+            className={currentPage === i + 1 ? s.active : ""}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </span>
     </section>
   );
 }

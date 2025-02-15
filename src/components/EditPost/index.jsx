@@ -4,12 +4,12 @@ import { useEffect, useState } from "react"
 import s from "./editPostForm.module.scss"
 
 export default function EditPostForm({ post, onSave, onCancel }) {
-  const [title, setTitle] = useState(post.title)
-  const [content, setContent] = useState(post.content)
+  const [title, setTitle] = useState(post?.title || "")
+  const [content, setContent] = useState(post?.content || "")
 
   useEffect(() => {
-    setTitle(post.title)
-    setContent(post.content)
+    setTitle(post?.title || "")
+    setContent(post?.content || "")
   }, [post])
 
   const handleSave = () => {

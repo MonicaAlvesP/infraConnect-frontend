@@ -1,7 +1,9 @@
 import { Inter } from "next/font/google";
 import '@/styles/main.scss';
-import Header from "@/components/Header";
 import ClientHeader from "@/components/ClientHeader";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 
 const inter = Inter({
   variable: "--font-inter",

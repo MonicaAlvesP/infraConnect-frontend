@@ -5,12 +5,15 @@ import { useRouter } from "next/navigation"
 import { loginUser } from "@/services/api"
 import { FaRegUser } from "react-icons/fa";
 import { TbLockPassword } from "react-icons/tb";
+import { AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
 
 import s from "./login.module.scss"
 
 export default function Login() {
   const [username, setUserName] = useState("")
   const [password, setPassword] = useState("")
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("")
   const router = useRouter()
 
@@ -30,6 +33,8 @@ export default function Login() {
       setError(error.response?.data?.message || "Erro ao fazer login")
     }
   }
+
+
 
   return (
     <section className={s.container}>
@@ -51,11 +56,18 @@ export default function Login() {
           <TbLockPassword />
           <input
             placeholder="Senha"
-            type="password"
+            type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className={s.showPasswordButton}
+          >
+            {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+          </button>
         </div>
         <button
           type="submit"
